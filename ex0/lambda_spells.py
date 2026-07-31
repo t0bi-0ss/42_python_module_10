@@ -2,8 +2,12 @@
 Demonstrates a beginner's level use of lambda functions
 """
 
+from typing import Any
 
-def artifact_sorter(artifacts: list[dict]) -> list[dict]:
+
+def artifact_sorter(
+        artifacts: list[dict[Any, Any]]
+) -> list[dict[Any, Any]]:
     """
     Returns same taken list of dicts but sorted using a combination of lambda
     and sorted functions
@@ -12,7 +16,9 @@ def artifact_sorter(artifacts: list[dict]) -> list[dict]:
     return sorted(artifacts, key=lambda x: x["power"], reverse=True)
 
 
-def power_filter(mages: list[dict], min_power: int) -> list[dict]:
+def power_filter(
+        mages: list[dict[Any, Any]], min_power: int
+) -> list[dict[Any, Any]]:
     """
     Returns the 'mages' list filtered by min_power using a combination of
     lambda and filter functions
@@ -30,7 +36,7 @@ def spell_transformer(spells: list[str]) -> list[str]:
     return list(map(lambda x: '*' + x + '*', spells))
 
 
-def mage_stats(mages: list[dict]) -> dict:
+def mage_stats(mages: list[dict[Any, Any]]) -> dict[str, int]:
     """
     Returns dict containing max, min and average power found in 'mages' using a
     combination of lambda, max and min functions
