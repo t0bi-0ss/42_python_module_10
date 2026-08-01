@@ -4,7 +4,12 @@ Demonstrates a beginner level implementation of 'Closures'
 
 from collections.abc import Callable
 
-from typing import Any
+from typing import Any, TypedDict
+
+
+class MemoryVault(TypedDict):
+    store: Callable[[str, Any], None]
+    recall: Callable[[str], Any]
 
 
 def mage_counter() -> Callable[[], int]:
@@ -87,12 +92,12 @@ for item in item_list:
 print()
 
 
-def memory_vault() -> dict[str, Callable]:
+def memory_vault() -> MemoryVault:
     """
     Returns a dict with 'store' and 'recall' functions
     """
 
-    storage = {}
+    storage: dict[str, Any] = {}
 
     def store(key: str, value: Any) -> None:
         storage[key] = value
@@ -116,9 +121,9 @@ items_dict = {
 
 for key, value in items_dict.items():
     print(f"Storing {value} {key}...")
-    store(key, value)
+    store(str(key), value)
 print()
 for key in items_dict.keys():
-    print(f"Recall {key} from vault: {recall(key)}")
+    print(f"Recall {str(key)} from vault: {recall(str(key))}")
 print("\nTrying to retrieve not valid key ")
 print(f"Key is 'bananas': {recall("bananas")}")
