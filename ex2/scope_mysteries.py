@@ -126,4 +126,4 @@ print()
 for key in items_dict.keys():
     print(f"Recall {str(key)} from vault: {recall(str(key))}")
 print("\nTrying to retrieve not valid key ")
-print(f"Key is 'bananas': {recall("bananas")}")
+print(f"Key is 'bananas': {recall('bananas')}")

@@ -39,12 +39,12 @@ def spell_reducer(spells: list[int], operation: str) -> int:
 print("Testing spell reducer...")
 spell_powers = [4, 5, 5, 6, 8]
 print("Spell powers:", spell_powers)
-print(f"Sum: {spell_reducer(spell_powers, "add")}")
-print(f"Product: {spell_reducer(spell_powers, "multiply")}")
-print(f"Max: {spell_reducer(spell_powers, "max")}")
-print(f"Min: {spell_reducer(spell_powers, "min")}")
-print(f"Not supported: {spell_reducer(spell_powers, "unknown")}")
-print(f"Empty list: {spell_reducer([], "add")}")
+print(f"Sum: {spell_reducer(spell_powers, 'add')}")
+print(f"Product: {spell_reducer(spell_powers, 'multiply')}")
+print(f"Max: {spell_reducer(spell_powers, 'max')}")
+print(f"Min: {spell_reducer(spell_powers, 'min')}")
+print(f"Not supported: {spell_reducer(spell_powers, 'unknown')}")
+print(f"Empty list: {spell_reducer([], 'add')}")
 print()
 
 
