@@ -100,7 +100,16 @@ def memory_vault() -> MemoryVault:
     storage: dict[str, Any] = {}
 
     def store(key: str, value: Any) -> None:
-        storage[key] = value
+        if key in storage:
+            try:
+                storage[key] += value
+            except (ValueError, TypeError):
+                print(
+                    f"Key '{key}' found but value '{value}' could not be added"
+                    f" to current value '{storage[str(key)]}'"
+                )
+        else:
+            storage[key] = value
 
     def recall(key: str) -> Any:
         return storage[key] if key in storage else "Memory not found"
@@ -127,3 +136,5 @@ for key in items_dict.keys():
     print(f"Recall {str(key)} from vault: {recall(str(key))}")
 print("\nTrying to retrieve not valid key ")
 print(f"Key is 'bananas': {recall('bananas')}")
+print("Trying to store 'apples': 'abc'...")
+store("apples", "abc")
