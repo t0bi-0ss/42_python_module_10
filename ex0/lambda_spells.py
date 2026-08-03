@@ -9,11 +9,32 @@ def artifact_sorter(
         artifacts: list[dict[Any, Any]]
 ) -> list[dict[Any, Any]]:
     """
-    Returns same taken list of dicts but sorted using a combination of lambda
-    and sorted functions
+    Returns same taken list of dicts but sorted by 'power' in desc order
+    using a combination of lambda and sorted functions
     """
 
     return sorted(artifacts, key=lambda x: x["power"], reverse=True)
+
+
+print("Testing artifact sorter...")
+artifacts = [
+    {'name': 'Light Prism', 'power': 88, 'type': 'armor'},
+    {'name': 'Storm Crown', 'power': 78, 'type': 'focus'},
+    {'name': 'Lightning Rod', 'power': 109, 'type': 'relic'},
+    {'name': 'Wind Cloak', 'power': 119, 'type': 'focus'}
+]
+sorted_artifacts = artifact_sorter(artifacts)
+print("Unsorted list:")
+for _ in artifacts:
+    print(
+        f"{_['name']} ({_['power']} power)"
+    )
+print("Sorted list:")
+for _ in sorted_artifacts:
+    print(
+        f"{_['name']} ({_['power']} power)"
+    )
+print()
 
 
 def power_filter(
@@ -27,6 +48,14 @@ def power_filter(
     return list(filter(lambda x: x['power'] >= min_power, mages))
 
 
+print("Testing power filter:")
+filtered_list = power_filter(artifacts, 80)
+print("List filtered with min power = 80")
+for _ in filtered_list:
+    print(_)
+print()
+
+
 def spell_transformer(spells: list[str]) -> list[str]:
     """
     Returns a list from 'spells' list adding '*' as prefix and suffix to each
@@ -34,6 +63,14 @@ def spell_transformer(spells: list[str]) -> list[str]:
     """
 
     return list(map(lambda x: '*' + x + '*', spells))
+
+
+print("Testing spell transformer...")
+spells = ['meteor', 'tsunami', 'heal', 'freeze']
+transformed_spells = spell_transformer(spells)
+for _ in transformed_spells:
+    print(_, end="")
+print("\n")
 
 
 def mage_stats(mages: list[dict[Any, Any]]) -> dict[str, int]:
@@ -53,3 +90,18 @@ def mage_stats(mages: list[dict[Any, Any]]) -> dict[str, int]:
     # average_v = sum(x['power'] for x in mages) / len(mages)
 
     return {'max': max_v, 'min': min_v, 'average': average_v}
+
+
+print("Testing mage stats...")
+mages = [
+    {'name': 'Sage', 'power': 58, 'element': 'earth'},
+    {'name': 'Ash', 'power': 72, 'element': 'wind'},
+    {'name': 'Casey', 'power': 90, 'element': 'wind'},
+    {'name': 'Morgan', 'power': 80, 'element': 'shadow'},
+    {'name': 'Alex', 'power': 80, 'element': 'earth'}
+]
+stats = mage_stats(mages)
+print("All mages:")
+for _ in mages:
+    print(_)
+print(stats)
