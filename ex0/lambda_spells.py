@@ -68,8 +68,8 @@ def spell_transformer(spells: list[str]) -> list[str]:
 print("Testing spell transformer...")
 spells = ['meteor', 'tsunami', 'heal', 'freeze']
 transformed_spells = spell_transformer(spells)
-for _ in transformed_spells:
-    print(_, end="")
+for s in transformed_spells:
+    print(s, end="")
 print("\n")
 
 
