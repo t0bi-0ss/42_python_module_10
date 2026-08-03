@@ -20,8 +20,8 @@ def spell_reducer(spells: list[int], operation: str) -> int:
     supported_ops = {
         "add": operator.add,
         "multiply": operator.mul,
-        "max": lambda x, y: x if x > y else y,
-        "min": lambda x, y: x if x < y else y
+        "max": lambda x, y: x if operator.gt(x, y) else y,
+        "min": lambda x, y: x if operator.lt(x, y) else y
     }
 
     if not spells:
@@ -122,6 +122,8 @@ def fib_test() -> None:
 
 
 fib_test()
+print(memoized_fibonacci.cache_info())
+print()
 
 
 def spell_dispatcher() -> Callable[[Any], str]:
